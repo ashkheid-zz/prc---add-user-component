@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import AddUser from './component/User/AddUser';
 import UsersList from './component/User/UsersList';
 
@@ -7,15 +7,18 @@ function App() {
 
   const addUserHandler = (uName, uAge) => {
     setUsersList((prevState) => {
-      return [...prevState, { id: Math.random().toString(), name: uName, age: uAge }];
+      return [
+        ...prevState,
+        { id: Math.random().toString(), name: uName, age: uAge },
+      ];
     });
   };
 
   return (
-    <div>
+    <Fragment>
       <AddUser onAddUser={addUserHandler} />
       <UsersList users={usersList} />
-    </div>
+    </Fragment>
   );
 }
 
